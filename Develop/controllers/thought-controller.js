@@ -32,13 +32,39 @@ const thoughtController = {
           { new: true }
         );
       })
-  },
+      .then((user) =>
+      !user
+        ? res
+            .status(404)
+            .json({ message: 'Thought created, but found no thought with that ID' })
+        : res.json('Created the thought 🎉')
+    )
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+},
 
   // update thought
   updateThought(req, res) {
     // TODO: update thought
-    
-
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $set: req.body },
+      {
+        runValidators: true,
+        new: true,
+      },
+    )
+    .then((thought) =>
+    !thought
+      ? res.status(404).json({ message: 'No thought with this id!' })
+      : res.json(thought)
+  )
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
   },
 
   // delete thought
@@ -71,12 +97,29 @@ const thoughtController = {
   // add a reaction to a thought
   addReaction(req, res) {
     //  TODO: add reaction to thought's reaction array
-
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $addToSet: { reactions: req.params.reactionsId } },
+      { new: true }
+    )
+    .then((thought) => {
+      if (!thought) {
+        return res.status(404).json({ message: 'No thought with this id!' });
+      }
+      res.json(thought);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   },
 
   // remove reaction from a thought
   removeReaction(req, res) {
     // TODO: remove reaction from thoughts
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId}
+    )
 
   },
 };
