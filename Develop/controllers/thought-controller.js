@@ -118,9 +118,20 @@ const thoughtController = {
   removeReaction(req, res) {
     // TODO: remove reaction from thoughts
     Thought.findOneAndUpdate(
-      { _id: req.params.thoughtId}
+      { _id: req.params.thoughtId},
+      { $pull: { reactions: req.params.reactionsId} },
+      { new: true},
     )
-
+    .then((thought) => {
+      if (!thought) {
+        return res.status(404).json({ message: 'No thought with this id!' });
+      }
+      res.json(thought);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   },
 };
 
