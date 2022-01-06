@@ -99,7 +99,7 @@ const thoughtController = {
     //  TODO: add reaction to thought's reaction array
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $addToSet: { reactions: req.params.reactionsId } },
+      { $addToSet: { reactions: req.params.reactionId } },
       { new: true }
     )
     .then((thought) => {
@@ -119,7 +119,7 @@ const thoughtController = {
     // TODO: remove reaction from thoughts
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId},
-      { $pull: { reactions: req.params.reactionsId} },
+      { $pull: { reactions: req.params.reactionId} },
       { new: true},
     )
     .then((thought) => {
