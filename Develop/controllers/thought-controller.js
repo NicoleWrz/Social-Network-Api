@@ -5,13 +5,14 @@ const thoughtController = {
   getThoughts(req, res) {
     // TODO: Your code here
     Thought.find()
-      .then((thought))
-
+      .then((thought) => res.json(thought))
+      .catch((err) => res.status(500).json(err))
   },
   
   // get single thought by id
   getSingleThought(req, res) {
     // TODO: Your code
+    Thought.findOne({_id: req.params.thoughtId})
 
   },
 
