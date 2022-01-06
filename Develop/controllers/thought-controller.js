@@ -27,17 +27,17 @@ const thoughtController = {
     Thought.create(req.body)
       .then((thought) => {
         return User.findOneAndUpdate(
-          {username: body.username},
-          {},
+          { userId: body.userId },
+          { $push: { thought: thought._id }},
           { new: true }
-        )
+        );
       })
-
   },
 
   // update thought
   updateThought(req, res) {
     // TODO: update thought
+    
 
   },
 
