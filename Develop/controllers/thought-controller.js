@@ -13,12 +13,25 @@ const thoughtController = {
   getSingleThought(req, res) {
     // TODO: Your code
     Thought.findOne({_id: req.params.thoughtId})
-
+      .then((thought) => 
+        !thought
+          ? res.status(404).json({ message: 'No thought with that ID' })
+          : res.json(post)
+      )
+      .catch((err) => res.status(500).json(err));
   },
 
   // create a thought
   createThought(req, res) {
     // TODO: create a thought and add the thought to user's thoughts array
+    Thought.create(req.body)
+      .then((thought) => {
+        return User.findOneAndUpdate(
+          {username: body.username},
+          {},
+          { new: true }
+        )
+      })
 
   },
 
