@@ -17,8 +17,11 @@
   npm install
 
   ## Screenshot
+  ![](https://github.com/NicoleWrz/Social-Network-Api/blob/c15d359fe9cf28568f6f439b7cd21c70d3fddbdd/Develop/Social%20Network%20API%20SS.png)
 
   ## Video
+https://user-images.githubusercontent.com/92045019/149049294-05691c30-f450-4bc6-8b24-5390fd340fb3.mp4
+
 
   ## License
 [![License Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&?style=plastic&link=https://choosealicense.com/licenses/mit/)](https://choosealicense.com/licenses/mit/)
