@@ -4,7 +4,6 @@ const dateFormat = require('../utils/dateFormat');
 
 const thoughtSchema = new Schema(
   {
-    // TODO: add thoughtText
     thoughtText: {
       type: String,
       required: true,
@@ -12,26 +11,21 @@ const thoughtSchema = new Schema(
       minlength: 1,
     },
 
-    // TODO: add createdAt
     createdAt: {
       type: Date,
       default: Date.now,
-      //Use a getter method to format the timestamp on query
       get: timestamp => {
         dateFormat(timestamp)
       }
     },
 
-    // TODO: add username
     username: {
     type: String,
     required: true,
   },
-    // TODO: add reactions
     reactions: [reactionSchema]
   },
   {
-    // TODO: Add toJSON option
     toJSON: {
       getters: true
     }
