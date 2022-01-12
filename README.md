@@ -5,8 +5,8 @@
   ## Table of Contents
   - [Description](#Description)
   - [Installations](#Installations)
-  - [Usage](#Usage)
-  - [Tests](#Tests)
+  - [Screenshot](#Screenshot)
+  - [Video](#Video)
   - [License](#License)
   - [Questions](#Questions)
 
